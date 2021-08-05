@@ -1,3 +1,6 @@
+1. Запустите приложение (yarn start or npm start)
+2. Запустите сервер (yarn server or npm server)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
