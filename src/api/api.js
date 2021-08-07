@@ -13,3 +13,10 @@ export const ProductsAPI = {
     }
 }
 
+export const ContentAPI = {
+    getText() {
+        return instance.get(`content`)
+    }
+}
+
+

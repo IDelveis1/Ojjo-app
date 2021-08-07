@@ -1,10 +1,12 @@
-import { ProductsAPI } from "../api/api"
+import { ContentAPI, ProductsAPI } from "../api/api"
 
 
 const initialState = {
     items: [],
     isLoaded: false,
     headerPopup: false,
+    readMore: null,
+    isLoadedReadMore: false,
 }
 
 const ipodsReducer = (state = initialState, action) => {
@@ -12,7 +14,6 @@ const ipodsReducer = (state = initialState, action) => {
         case 'SET_IPODS':
             return {
                 ...state, 
-                //items: action.payload,
                 items: [...state.items, ...action.payload],
                 isLoaded: true,
 
@@ -27,6 +28,12 @@ const ipodsReducer = (state = initialState, action) => {
                 ...state,
                 headerPopup: action.payload
             }
+        case 'SET_READ_MORE':
+            return{
+                ...state,
+                readMore: action.payload,
+                isLoadedReadMore: true,
+            }    
         default:
             return state        
 
@@ -41,6 +48,8 @@ export const setPreLoader = (isLoading) => ({type: "SET_PRE_LOADER", payload: is
 
 export const setHeaderPopup = (setted) => ({type: "SET_HEADER_POPUP", payload: setted})
 
+export const setReadMore = (text) => ({type: "SET_READ_MORE", payload: text})
+
 //===============================================================================================================
 
 
@@ -49,6 +58,14 @@ export const fetchIpods = (startSlice, numberOfProducts) => async (dispatch) => 
     const { data } = await ProductsAPI.getProducts(startSlice, numberOfProducts)
     dispatch(setIpods(data))
 }
+
+
+export const fetchReadMore = () => async (dispatch) => {
+    dispatch(setPreLoader(false))
+    const { data } = await ContentAPI.getText()
+    dispatch(setReadMore(data.text))
+}
+
 
 
 export default ipodsReducer;

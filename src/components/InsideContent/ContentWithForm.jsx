@@ -30,11 +30,11 @@ const ContentWithForm = () => {
                                     validate={values => {
                                         const errors = {};
                                         if (!values.email) {
-                                        errors.email = 'Required';
+                                        errors.email = 'Введите пожалуйста';
                                         } else if (
                                         !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
                                         ) {
-                                        errors.email = 'Invalid email address';
+                                        errors.email = 'Неправильный E-MAIL';
                                         }
                                         return errors;
                                     }}
@@ -65,7 +65,9 @@ const ContentWithForm = () => {
                                             value={values.email}
                                             placeholder='    ВАШ E-MAIL'
                                         />
-                                        {errors.email && touched.email && errors.email}              
+                                        <div className="errors">
+                                        {errors.email && touched.email && errors.email}  
+                                        </div>            
                                         <button type="submit" disabled={isSubmitting} className="mail-form__btn btn">
                                             Отправить
                                         </button>
