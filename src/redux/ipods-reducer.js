@@ -1,4 +1,4 @@
-import axios from "axios"
+import { ProductsAPI } from "../api/api"
 
 
 const initialState = {
@@ -12,8 +12,8 @@ const ipodsReducer = (state = initialState, action) => {
         case 'SET_IPODS':
             return {
                 ...state, 
-                items: action.payload,
-                //items: [...state.items, ...action.payload],
+                //items: action.payload,
+                items: [...state.items, ...action.payload],
                 isLoaded: true,
 
             }
@@ -33,17 +33,22 @@ const ipodsReducer = (state = initialState, action) => {
     }
 }
 
-
-export const fetchIpods = (numberOfProducts) => (dispatch) => {
-    dispatch(setPreLoader(false))
-    axios.get(`http://localhost:3004/products?_limit=${numberOfProducts}`).then(({ data }) => dispatch(setIpods(data)))
-}
+//===============================================================================================================
 
 export const setIpods = (items) => ({type: 'SET_IPODS', payload: items})
 
 export const setPreLoader = (isLoading) => ({type: "SET_PRE_LOADER", payload: isLoading})
 
 export const setHeaderPopup = (setted) => ({type: "SET_HEADER_POPUP", payload: setted})
+
+//===============================================================================================================
+
+
+export const fetchIpods = (startSlice, numberOfProducts) => async (dispatch) => {
+    dispatch(setPreLoader(false))
+    const { data } = await ProductsAPI.getProducts(startSlice, numberOfProducts)
+    dispatch(setIpods(data))
+}
 
 
 export default ipodsReducer;

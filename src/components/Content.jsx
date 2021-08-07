@@ -1,8 +1,8 @@
 import React from 'react';
-import Categories from './Categories';
-import ContentWithForm from './ContentWithForm';
-import ContentWithRead from './ContentWithRead';
-import Products from './Products';
+import Categories from './InsideContent/Categories';
+import ContentWithForm from './InsideContent/ContentWithForm';
+import ContentWithRead from './InsideContent/ContentWithRead';
+import Products from './InsideContent/Products';
 
 
 const Content = ({categoryItems }) => {

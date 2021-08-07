@@ -34,8 +34,6 @@ const ContentWithRead = () => {
                             <span className='_icon-jewelry'></span>
                             <div className="contentWithRead__ic-text">Личный подход</div>
                         </div>
-                        
-                    
                     </div>
                 </div>
             </div>

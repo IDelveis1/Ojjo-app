@@ -6,7 +6,7 @@ const Categories = ({categoryItems}) => {
             <section className='page__categories categories'>
                 <div className="categories__container _container">
                     <div className="categories__body">
-                    {categoryItems.map((name, index ) => {
+                    {categoryItems.map((name) => {
                         return (
                                  <div className='categories__item'>
                                     <div className="categories__text">{name}</div>

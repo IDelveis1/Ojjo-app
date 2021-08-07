@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchIpods } from '../redux/ipods-reducer';
+import { fetchIpods, fetchIpods2 } from '../../redux/ipods-reducer';
 import IpodBlock from './IpodBlock';
 
 
@@ -10,9 +10,11 @@ const Products = () => {
     const isLoaded = useSelector(({ ipods }) => ipods.isLoaded)
     const dispatch = useDispatch()
     let [numberOfProducts, setNumberOfProducts] = useState(6)
+    let [startSlice, setStartSlice] = useState(0)
 
     useEffect(() => {
-        dispatch(fetchIpods(numberOfProducts))
+        dispatch(fetchIpods(startSlice, numberOfProducts))
+        setStartSlice(numberOfProducts)
       }, [numberOfProducts])
 
     const handleOnClick = () => {
