@@ -7,14 +7,14 @@ import ContentWithRead from './InsideContent/ContentWithRead';
 import Products from './InsideContent/Products';
 
 
-const Content = ({categoryItems }) => {
+const Content = ({categoryItems, sortType }) => {
 
     const headerPopup = useSelector(({ipods}) => ipods.headerPopup);
 
     return(
         <main className='page'>
             {headerPopup && <BurgerPopup />}
-            <Categories categoryItems={categoryItems}/>
+            <Categories sortType={ sortType } categoryItems={categoryItems}/>
             <Products />
             <ContentWithForm />
             <ContentWithRead />    

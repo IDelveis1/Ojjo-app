@@ -1,5 +1,7 @@
-1. Запустите приложение (yarn start or npm start)
-2. Запустите сервер (yarn server or npm server)
+1. clone repo
+2. npm install
+3. Запустите приложение (yarn start or npm start)
+4. Запустите сервер (yarn server or npm server)
 
 # Getting Started with Create React App
 
