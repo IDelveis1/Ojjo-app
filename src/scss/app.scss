@@ -482,7 +482,7 @@ _icon-arrow {
 //=========================================================================================================================================
 
 .authPopup {
-  position: absolute;
+  position: fixed;
   z-index: 30;
   top: 0;
   right: 0;
@@ -501,6 +501,7 @@ _icon-arrow {
   .popup-menu {
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 
     &__list {
       display: flex;
